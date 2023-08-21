@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <title>fmg assessment</title>
+  </head>
+  <body onload="document.formValidate.name.focus()">
+    <div>
+      <div class="question">
+        Assessment 1. Write a simple Validation in Javascript for - email, phone
+        and name.
+      </div>
+      <div>
+        <h1>Form Validation</h1>
+        <form name="formValidate" id="form">
+          <label for="name">Name:</label>
+          <input type="text" id="name" placeholder="Name" />
+          <label for="email">Email:</label>
+          <input type="text" id="email" placeholder="Email" />
+          <label for="phone">Phone:</label>
+          <input type="text" id="phone" placeholder="Phone" maxlength="13" />
+          <input type="submit" value="Validate" />
+        </form>
+        <div id="output"></div>
+      </div>
+    </div>
+    <div>
+      <div class="question">
+        Assessment 2. Create a simple HTML Table with a search bar - that
+        filters table row contents on the fly .
+      </div>
+      <div>
+        <h1>Table Search</h1>
+        <input type="text" id="carSearch" placeholder="Search" />
+        <table id="table"></table>
+      </div>
+    </div>
+  </body>
+  <script src="js/index.js"></script>
+</html>
