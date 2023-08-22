@@ -1,0 +1,50 @@
+:root {
+  --body-bg-color: #b3e5fc;
+  --blue-color: #00b0ff;
+}
+
+body {
+  background-color: var(--body-bg-color);
+}
+
+.form-card {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.form-heading {
+  background: var(--blue-color);
+}
+
+.btn--validate {
+  background-color: var(--blue-color);
+}
+
+.btn--validate:hover,
+.btn--validate:focus-visible,
+.btn--validate:first-child:active {
+  color: white;
+  background-color: var(--blue-color);
+}
+
+#errorMsg {
+  display: none;
+}
+
+.user {
+  color: var(--blue-color);
+}
+
+@media screen and (max-width: 600px) {
+  .form-card {
+    width: -webkit-fill-available;
+    margin: 0;
+  }
+  tr td:nth-of-type(8) {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 5rem;
+  }
+}

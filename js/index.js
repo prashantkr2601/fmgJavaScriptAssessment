@@ -11,10 +11,10 @@ function inputValidation(validatedRegex, inputValue, selectedId) {
     inputValue !== undefined &&
     inputValue
   ) {
-    document.getElementById(selectedId).style.border = "5px solid green";
+    document.getElementById(selectedId).style.border = "3px solid green";
     return true;
   } else {
-    document.getElementById(selectedId).style.border = "5px solid red";
+    document.getElementById(selectedId).style.border = "3px solid red";
     return false;
   }
 }
@@ -46,15 +46,20 @@ function handleFormValues(event) {
   let phoneValidationResult = phoneValidation(phone, "phone");
 
   if (nameValidationResult && emailValidationResult && phoneValidationResult) {
+    document.getElementById("errorMsg").style.display = "none";
     let div = document.createElement("div");
+    let classes = ["card", "p-3", "shadow", "border-3"];
+    div.classList.add(...classes);
     div.innerHTML = `
-      <h2>Validated Data!</h2>
-      <p>Name: ${name}</p>
-      <p>Email: ${email}</p>
-      <p>Phone: ${phone}</p>
+      <h3 class="text-center fw-bold user">User Data</h3>
+      <p class="mb-1"><span class="fw-bold">Name: </span>${name}</p>
+      <p class="mb-1"><span class="fw-bold">Email:</span> ${email}</p>
+      <p class="mb-1"><span class="fw-bold">Phone:</span> ${phone}</p>
       `;
     document.getElementById("output").style.display = "block";
     document.getElementById("output").appendChild(div);
+  } else {
+    document.getElementById("errorMsg").style.display = "block";
   }
 }
 document.getElementById("form").addEventListener("submit", handleFormValues);
@@ -297,8 +302,9 @@ function generateTableHead(table, data) {
 }
 
 function generateTable(table, data) {
+  let tbody = table.createTBody();
   for (let element of data) {
-    let row = table.insertRow();
+    let row = tbody.insertRow();
     for (key in element) {
       let cell = row.insertCell();
       let text = document.createTextNode(element[key]);
@@ -336,6 +342,10 @@ function handleSearch(event) {
   } else {
     let row = table.insertRow();
     let cell = row.insertCell();
+    cell.setAttribute("colspan", "8");
+    cell.setAttribute("rowspan", "4");
+    let rowClasses = ["text-center", "fs-3", "fw-bold", "text-danger", "py-3"];
+    cell.classList.add(...rowClasses);
     let text = document.createTextNode("No Data Found");
     cell.appendChild(text);
   }
