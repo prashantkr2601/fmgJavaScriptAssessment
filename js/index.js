@@ -2,7 +2,15 @@
 // Assessment 1. Write a simple Validation in Javascript for - email, phone and name
 
 function inputValidation(validatedRegex, inputValue, selectedId) {
-  if (validatedRegex.test(inputValue)) {
+  if (
+    validatedRegex.test(inputValue) &&
+    inputValue !== "" &&
+    inputValue.trim().length > 0 &&
+    inputValue.trim().length < 30 &&
+    inputValue !== null &&
+    inputValue !== undefined &&
+    inputValue
+  ) {
     document.getElementById(selectedId).style.border = "5px solid green";
     return true;
   } else {
@@ -33,11 +41,11 @@ function handleFormValues(event) {
   let email = document.getElementById("email").value;
   let phone = document.getElementById("phone").value;
 
-  if (
-    nameValidation(name, "name") &&
-    emailValidation(email, "email") &&
-    phoneValidation(phone, "phone")
-  ) {
+  let nameValidationResult = nameValidation(name, "name");
+  let emailValidationResult = emailValidation(email, "email");
+  let phoneValidationResult = phoneValidation(phone, "phone");
+
+  if (nameValidationResult && emailValidationResult && phoneValidationResult) {
     let div = document.createElement("div");
     div.innerHTML = `
       <h2>Validated Data!</h2>
